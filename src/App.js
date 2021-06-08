@@ -4,10 +4,10 @@ import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-import TodoItem from './components/MenuItem';
-import AddMenu from './components/AddMenu';
+import MenuItem from './components/MenuItem';
+import AddOrder from './components/AddOrder';
 
-import actions from './actions/menuAction';
+import actions from './actions/orderAction';
 
 
 function App() {
@@ -28,14 +28,14 @@ function App() {
   return (
     <section>
       <article className="menu-app">
-        <h1>Todo App</h1>
+        <h1>Coffee-Shop</h1>
         <ul className="menu-list">
             { menu.map((menu1) => {
-                return <TodoItem task={ menu1.task } key={ menu1.id } />
+                return <MenuItem task={ menu1.task } key={ menu1.id } />
             }) }
         </ul>
       </article>
-      <AddMenu />
+      <AddOrder />
     </section>
   );
 }

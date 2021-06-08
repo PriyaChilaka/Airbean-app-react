@@ -2,9 +2,9 @@ const initState = {
     menu: []
 }
 
-export const menusReducer = (state = initState, action) => {
+export const orderReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'ADD_MENU':{
+        case 'ADD_ORDER':{
             return {
                 ...state,
                 menu: [

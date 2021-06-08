@@ -1,6 +1,6 @@
- const addMenu = (menu) => {
+ const addOrder = (menu) => {
     return {
-        type: 'ADD_MENU',
+        type: 'ADD_ORDER',
         payload: menu
     }
 }
@@ -13,4 +13,4 @@ const getMenu = (menu) => {
     
 }
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {addMenu,getMenu}
+export default {addOrder,getMenu}

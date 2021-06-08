@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import actions from '../actions/menuAction';
+import actions from '../actions/orderAction';
 
-function AddMenu() {
+function AddOrder() {
     const [menu, setMenu] = useState('');
     const dispatch = useDispatch();
 
     function handleClick() {
-      dispatch(actions.addMenu(menu))
+      dispatch(actions.addOrder(menu))
     }
 
     return (
-        <section className="add-menu">
+        <section className="add-order">
             <input className="input-field" placeholder="Skriv in en menu" 
             onKeyUp={ (event) => { setMenu(event.target.value) }} />
             <button onClick={ handleClick }>Lägg till ny menu</button>
@@ -19,4 +19,4 @@ function AddMenu() {
     )
 }
 
-export default AddMenu;
+export default AddOrder;

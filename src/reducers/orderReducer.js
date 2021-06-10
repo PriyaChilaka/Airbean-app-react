@@ -20,7 +20,7 @@ export const orderReducer = (state = initState, action) => {
             }
 
         }
-             case 'GET_ORDER':
+             case 'POST_ORDER':
             return {
                 ...state,
                 orders: state.orders.map(order => {

@@ -5,9 +5,9 @@
     }
 }
  
- const getOrder = (orderID) => {
+ const postOrder = (orderID) => {
     return {
-        type: 'GET_ORDER',
+        type: 'POST_ORDER',
         payload: orderID
     }
 }
@@ -19,4 +19,4 @@ const getMenu = (menu) => {
     
 }
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {addOrder,getMenu,getOrder}
+export default {addOrder,getMenu,postOrder}

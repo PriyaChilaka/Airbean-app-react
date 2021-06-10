@@ -27,7 +27,7 @@ function Order() {
         <h1>Orders</h1>
         <ul className="menu-list">
             { order.map((order1) => {
-              return <OrderItem task= { order1.orderId } task1={ order1.eta } task2={ order1.time }  key={ order1.id } />
+              return <OrderItem order= { order1.orderId } order1={ order1.eta } order2={ order1.time }  key={ order1.id } />
             }) }
         </ul>
       </article>

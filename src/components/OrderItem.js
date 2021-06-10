@@ -1,4 +1,4 @@
-function MenuItem({ task,task1,task2}) {
+function OrderItem({ task,task1,task2}) {
 
   return (
       <li>{task}
@@ -8,4 +8,4 @@ function MenuItem({ task,task1,task2}) {
   )
 }
 
-export default MenuItem
+export default OrderItem

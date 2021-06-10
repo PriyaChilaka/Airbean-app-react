@@ -3,15 +3,16 @@ const initState = {
     orders:[]
 }
 
-let id = 0
+
+let orderID=0
 export const orderReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_ORDER':{
             return {
                 ...state,
-                menu: [
+                orders: [
                     ...state.menu, {
-                        id:id++,
+                        orderID:orderID++,
                         task: action.payload,
                         done:false
                     }
@@ -19,11 +20,11 @@ export const orderReducer = (state = initState, action) => {
             }
 
         }
-             case 'UPDATE_ORDER':
+             case 'GET_ORDER':
             return {
                 ...state,
-                menu: state.orders.map(order => {
-                    if (order.id !== action.payload) {
+                orders: state.orders.map(order => {
+                    if (order.orderID !== action.payload) {
                         return order;
                     }
 

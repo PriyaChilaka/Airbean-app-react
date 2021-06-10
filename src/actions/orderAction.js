@@ -1,14 +1,14 @@
- const addOrder = (id) => {
+ const addOrder = (orderID) => {
     return {
         type: 'ADD_ORDER',
-        payload: id
+        payload: orderID
     }
 }
  
- const updateOrder = (id) => {
+ const getOrder = (orderID) => {
     return {
-        type: 'ADD_ORDER',
-        payload: id
+        type: 'GET_ORDER',
+        payload: orderID
     }
 }
 const getMenu = (menu) => {
@@ -19,4 +19,4 @@ const getMenu = (menu) => {
     
 }
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {addOrder,getMenu,updateOrder}
+export default {addOrder,getMenu,getOrder}

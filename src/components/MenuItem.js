@@ -1,7 +1,8 @@
 function MenuItem({ task }) {
-    
-    return (
-        <li> {task}</li>
-    )
+
+  return (
+      <li>{ task } </li>
+  )
 }
+
 export default MenuItem

@@ -5,10 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { menusReducer } from './reducers/menusReducer';
+import { orderReducer } from './reducers/orderReducer';
 
 const store = createStore(
-  menusReducer
+  orderReducer,
+   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 ReactDOM.render(

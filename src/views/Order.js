@@ -1,41 +1,51 @@
-//import {  /*useDispatch */useSelector} from 'react-redux';
-//import { /*useEffect */} from 'react';
-//import actions from './actions/orderAction';
-//import OrderItem from './components/OrderItem';
+import { useState } from 'react';
+//import logo from '../assets/logo.png';
+
+import Header from '../components/Header'
+import {useHistory} from 'react-router-dom'
 
 function Order() {
-  //const [menu,setMenu] =useState([])
- // const order = useSelector((state) => { return state.order})
- // const dispatch = useDispatch()
-
- /* useEffect(() => {
-    async function getOrder() {
-      const response = await fetch('http://localhost:8000/api/order/:id')
-      const data = await response.json()
-      console.log('getOrder:', data)
-     // setMenu(data.results)
-      dispatch(actions.getOrder(data.order))
-    }
-
-    getOrder()
-  }, [dispatch])*/
-
-  return (
-    <section>
-      <article className="menu-app">
-        
-        <h1>Orders</h1>
-        <ul className="menu-list">
-            {/* order.map((order1) => {
-              return <OrderItem order= { order1.orderId } order1={ order1.eta } order2={ order1.time }  key={ order1.id } />
-            }) */}
-        </ul>
-      </article>
+    const [orderID, setOrderID] = useState('')
     
-      
-      
-    </section>
-  );
+    const history = useHistory()
+
+    function handleTotal() {
+        fetch('http://localhost:8000/api/account', {
+            body: JSON.stringify({ orders: orderID}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        })
+            .then((response) => response.json())
+            .then(result => {
+                console.log('Your Order Finish:', result)
+                history.push("/")
+            })
+            .catch(error => {
+                console.error('Error:', error)
+            })
+    
+  }
+    
+    return (
+        <div className="order">
+            <Header />
+            <div id="order_id">
+   
+            <form className="order_form">
+                
+                <input  value={orderID} onChange={(e) => setOrderID(e.target.value)}></input>
+
+                
+
+                <button type="button" className="submit_btn" onClick={handleTotal}></button>
+                </form>
+                </div>
+        </div>
+    )
 }
 
-export default Order;
+
+
+export default Order

@@ -1,14 +1,14 @@
- const addOrder = (orderID) => {
+ const addOrder = (orders) => {
     return {
         type: 'ADD_ORDER',
-        payload: orderID
+        payload: orders
     }
 }
  
- const postOrder = (orderID) => {
+ const postOrder = (orders) => {
     return {
         type: 'POST_ORDER',
-        payload: orderID
+        payload: orders
     }
 }
 const getMenu = (menu) => {

@@ -5,7 +5,7 @@ import About from './views/About'
 import Menu from './views/Menu'
 import User from './views/User'
 import Profile from './views/Profile'
-import Order from './views/Order'
+import orderStatus from './views/orderStatus'
 import Navbar from './views/Navbar'
 
 
@@ -19,7 +19,7 @@ function App() {
         <Route path="/About" component={ About } />
         <Route path="/Menu" component={ Menu } />
         <Route path="/User" component={ User } />
-        <Route path="/Order" component={ Order } />
+        <Route path="/orderStatus" component={ orderStatus } />
         <Route path="/Navbar" component={ Navbar } />
       </Switch>
       </BrowserRouter>

@@ -4,15 +4,16 @@ const initState = {
 }
 
 
-let orderID=0
+let index =0
 export const orderReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'ADD_ORDER':{
+        case 'ADD_ORDER': {
+            
             return {
                 ...state,
                 orders: [
-                    ...state.menu, {
-                        orderID:orderID++,
+                    ...state.orders, {
+                        index:index++,
                         task: action.payload,
                         done:false
                     }

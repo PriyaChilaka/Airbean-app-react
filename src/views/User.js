@@ -11,7 +11,7 @@ function User() {
 
     function handleLogin() {
         fetch('http://localhost:8000/api/account', {
-            body: JSON.stringify({ username: username, passowrd: password }),
+            body: JSON.stringify({ username: username, password: password }),
             headers: {
                 'Content-Type': 'application/json'
             },

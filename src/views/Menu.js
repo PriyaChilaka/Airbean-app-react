@@ -1,17 +1,17 @@
-import logo from './assets/logo.png'
+import logo from '../assets/logo.png'
 //import Order from './views/Order'
-import './App.css';
+
 import {  useDispatch ,useSelector} from 'react-redux';
 import { useEffect } from 'react';
 //import About from './views/About'
-import MenuItem from './components/MenuItem';
+import MenuItem from '../components/MenuItem';
 //import AddOrder from './components/AddOrder';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import actions from './actions/orderAction';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import actions from '../actions/orderAction';
 
 
-function App() {
+function Menu() {
   //const [menu,setMenu] =useState([])
   const menu = useSelector((state) => { return state.menu})
   const dispatch = useDispatch()
@@ -30,7 +30,8 @@ function App() {
 
   return (
     <section>
-      <article className="menu-app">
+          <article className="menu-app">
+               <Header />
         <img src={ logo } alt="different  colors "/>
         <h1>Coffee-Shop</h1>
         <ul className="menu-list">
@@ -41,10 +42,10 @@ function App() {
       </article>
     
       
-      <Header />
+      
       <Footer />
     </section>
   );
 }
 
-export default App;
+export default Menu;

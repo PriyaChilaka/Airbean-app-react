@@ -4,7 +4,7 @@ import user from '../assets/user.png';
 
 import Header from '../components/Header'
 
-function Profile({setUserName, setPassWord,setId,setUserId,setOrderID}) {
+function Profile({setUserName, setPassWord}) {
 
 
   return (
@@ -15,9 +15,7 @@ function Profile({setUserName, setPassWord,setId,setUserId,setOrderID}) {
 
 <span>{setUserName}</span>
         <span>{setPassWord}</span>
-        <span>{ setId}</span>
-        <span>{setUserId}</span>
-        <span>{setOrderID}</span>
+        
 
     <h2 id="text-profile">OrderHistory</h2>
     </div>

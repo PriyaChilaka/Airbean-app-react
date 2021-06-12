@@ -5,13 +5,13 @@ import Header from '../components/Header'
 import {useHistory} from 'react-router-dom'
 
 function Order() {
-    const [orderID, setOrderID] = useState('')
+    const [ID, setID] = useState('')
     
     const history = useHistory()
 
     function handleTotal() {
         fetch('http://localhost:8000/api/account', {
-            body: JSON.stringify({ orders: orderID}),
+            body: JSON.stringify({ orders: ID}),
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -35,7 +35,7 @@ function Order() {
    
             <form className="order_form">
                 
-                <input  value={orderID} onChange={(e) => setOrderID(e.target.value)}></input>
+                <input  value={ID} onChange={(e) => setID(e.target.value)}></input>
 
                 
 

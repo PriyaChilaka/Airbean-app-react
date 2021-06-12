@@ -1,13 +1,18 @@
-import logo from '../assets/logo.png'
-//import Order from './views/Order'
+import bag from'../../assets/bag.png'
+import add from '../../assets/add.png'
 
+//import Order from './views/Order'
+//import { useHistory } from 'react-router-dom'
+import Modal from "react-modal";
 import {  useDispatch ,useSelector} from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect ,useState } from 'react';
 //import About from './views/About'
 import MenuItem from '../components/MenuItem';
 import AddOrder from '../components/AddOrder';
+
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+
 import actions from '../actions/orderAction';
 
 
@@ -28,23 +33,60 @@ function Menu() {
     getMenu()
   }, [dispatch])
 
+   const [isOpen, setIsOpen] = useState(false);
+
+  //const history = useHistory()
+
+  function toggleModal() {
+    setIsOpen(!isOpen);
+  }
+
   return (
-    <section>
-          <article className="menu-app">
+    <div id ="menu">
                <Header />
-        <img src={ logo } alt="different  colors "/>
-        <h1>Coffee-Shop</h1>
-        <ul className="menu-list">
+        <div>
+        <div id="circle">
+      <img id="bag" src={bag} alt="Cart" role= "button" onClick={toggleModal}/>
+        
+       <Modal
+        appElement={document.getElementById('menu')}
+        isOpen={isOpen}
+        onRequestClose={toggleModal}
+        className="mymodal"
+        overlayClassName="myoverlay"
+      ></Modal>
+          
+          <div id="small-circle">
+        <p id="number">0</p>
+      </div>
+      </div>
+          <h2 id="title-menu">Menu</h2>
+          <ul className="menu-list">
             { menu.map((menu1,index) => {
               return <MenuItem task= { menu1.title } task1={ menu1.desc } task2={ menu1.price }  key={ index} />
             }) }
         </ul>
-      </article>
     <AddOrder />
       
-      
+         <div id="menu-items">
+    <img id="add" src={add} alt="Add To Cart"/>
+    <p>Coffee 1</p>
+    <img id="add" src={add} alt="Add To Cart"/>
+    <p>Coffee 2</p>
+    <img id="add" src={add} alt="Add To Cart"/>
+    <p>Coffee 3</p>
+    <img id="add" src={add} alt="Add To Cart"/>
+    <p>Coffee 4</p>
+    <img id="add" src={add} alt="Add To Cart"/>
+    <p>Coffee 5</p>
+    <img id="add" src={add} alt="Add To Cart"/>
+    <p>Coffee 6</p>
+    </div>
+        
+
+      </div>
       <Footer />
-    </section>
+   </div>
   );
 }
 

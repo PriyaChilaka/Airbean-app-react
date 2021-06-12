@@ -1,18 +1,18 @@
 
 import drone from '../assets/drone.png'
-//import Order from './views/Order'
 
+import { useHistory } from 'react-router-dom'
 import {  useDispatch ,useSelector} from 'react-redux';
 import { useEffect } from 'react';
-//import About from './views/About'
+
 import OrderItem from '../components/OrderItem';
-//import AddOrder from '../components/AddOrder';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+
 import actions from '../actions/orderAction';
 
 
-function orderStatus() {
+function OrderStatus() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const history = useHistory()
   //const [menu,setMenu] =useState([])
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const orders = useSelector((state) => { return state.orders})
@@ -32,28 +32,29 @@ function orderStatus() {
   }, [dispatch])
 
   function handleClick() {
-      dispatch(actions.getOrder(orders))
+    dispatch(actions.getOrder(orders))
+    history.push('/User')
     }
 
   return (
-    <section>
-          <article className="menu-app">
-               <Header />
-        <img src={ drone } alt="different  colors "/>
-        <h1>Your Order is On the way!</h1>
+ <div>
+           <div id="orderstatus">    
+        <img src={ drone } alt="different  with Coffee-Mug "/>
+        <h2 id="title-orderstatus">Your Order is On the way!</h2>
+        <p>13 Mintutes</p>
         <ul className="menu-list">
             { orders.map((menu1,index) => {
               return <OrderItem order= { menu1.orderNumber } order1={ menu1.eta } order2={ menu1.price }  key={ index} />
             }) }
         </ul>
-        <button onClick={ handleClick }>Ok,cool!</button>
-      </article>
+        <button id="ok" type="button" onClick={ handleClick }>Ok,cool!</button>
+      
+    </div>
+      
+      </div>
+      
     
-      
-      
-      <Footer />
-    </section>
   );
 }
 
-export default orderStatus
+export default OrderStatus

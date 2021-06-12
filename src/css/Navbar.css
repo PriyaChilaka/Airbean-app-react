@@ -1,0 +1,28 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 250px;
+}
+
+#cross {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  cursor: pointer;
+}
+
+.text-link {
+  color: #f3e4e1;
+  text-decoration: inherit;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "PT Serif";
+}
+
+hr {
+  border-radius: 2px;
+  width: 15%;
+  color: #555;
+  background-color: #555;
+  height: 1px;
+}

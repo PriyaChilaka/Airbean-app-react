@@ -17,7 +17,7 @@ function Profile({setUserName, setPassWord}) {
         <span>{setPassWord}</span>
         
 
-    <h2 id="text-profile">OrderHistory</h2>
+    <h2 id="text-user">OrderHistory</h2>
     </div>
     </div>
   )

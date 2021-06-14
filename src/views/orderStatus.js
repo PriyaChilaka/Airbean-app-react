@@ -33,7 +33,7 @@ function OrderStatus() {
 
   function handleClick() {
     dispatch(actions.getOrder(orders))
-    history.push('/User')
+    history.push('/Menu')
     }
 
   return (

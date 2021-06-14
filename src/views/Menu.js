@@ -1,8 +1,7 @@
-import bag from'../../assets/bag.png'
-import add from '../../assets/add.png'
-
-//import Order from './views/Order'
-//import { useHistory } from 'react-router-dom'
+import bag from'../assets/bag.png'
+import add from '../assets/add.png'
+import '../css/Menu.css'
+import { useHistory } from 'react-router-dom'
 import Modal from "react-modal";
 import {  useDispatch ,useSelector} from 'react-redux';
 import { useEffect ,useState } from 'react';
@@ -20,6 +19,7 @@ function Menu() {
   //const [menu,setMenu] =useState([])
   const menu = useSelector((state) => { return state.menu})
   const dispatch = useDispatch()
+  const history = useHistory()
 
   useEffect(() => {
     async function getMenu() {
@@ -27,6 +27,7 @@ function Menu() {
       const data = await response.json()
       console.log('getMenu:', data)
      // setMenu(data.results)
+      
       dispatch(actions.getMenu(data.menu))
     }
 
@@ -39,6 +40,7 @@ function Menu() {
 
   function toggleModal() {
     setIsOpen(!isOpen);
+    history.push('/Order')
   }
 
   return (

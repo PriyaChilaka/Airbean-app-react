@@ -3,6 +3,7 @@ import cross from'../assets/cross.png'
 
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
+import '../css/Navbar.css'
 
 function Navbar() {
 
@@ -15,7 +16,7 @@ function presentPage(){
 }
 
   return (
-    <div>
+    <div >
     <img id="cross" src={ cross } alt="menucross" role="button" onClick={presentPage}/>
     <nav>
       <Link className="text-link" to="/Menu">Menu</Link>

@@ -20,7 +20,7 @@ function Order() {
             .then((response) => response.json())
             .then(result => {
                 console.log('Your Order is Ready:', result)
-                history.push("/")
+                history.push("/orderStatus")
             })
             .catch(error => {
                 console.error('Error:', error)
@@ -35,11 +35,11 @@ function Order() {
    
             <form className="order_form">
                 
-                <input type="userid"  value={orderID} onChange={(e) => setOrderID(e.target.value)}></input>
+                <input type="userid"  value={orderID} onChange={(e) => setOrderID(e.target.value)}>BryggKaffee</input>
 
-                <input type="id" value={userId} onChange={(e) => setUserId(e.target.value)}></input>
+                <input type="id" value={userId} onChange={(e) => setUserId(e.target.value)}>Total</input>
 
-                <button type="button" className="submit_btn" onClick={handleTotal}></button>
+                <button type="button" className="submit_btn" onClick={handleTotal}>Take My Money</button>
                 </form>
                 </div>
         </div>

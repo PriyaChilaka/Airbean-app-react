@@ -1,10 +1,12 @@
 const initState = {
     menu: [],
-    orders:[]
+    orders: [],
+    userId: [],
+    selection:[]
 }
 
 
-let index =0
+//let index =0
 export const orderReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_ORDER': {
@@ -13,9 +15,8 @@ export const orderReducer = (state = initState, action) => {
                 ...state,
                 orders: [
                     ...state.orders, {
-                        index:index++,
-                        task: action.payload,
-                        done:false
+                        id: state.order.length + 1,
+            task: action.payload
                     }
                 ]
             }
@@ -35,6 +36,19 @@ export const orderReducer = (state = initState, action) => {
                     }
                 })
             }
+        case 'SET_USERID': {
+            return {
+                ...state,
+                userId:action.payload
+            }
+        }
+        
+             case 'POST_USERID': {
+            return {
+                ...state,
+                userId:action.payload
+            }
+        }
         case 'FETCH_MENU': {
 return {
     ...state,

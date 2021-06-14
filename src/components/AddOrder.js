@@ -1,20 +1,48 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import actions from '../actions/orderAction';
+import {  useSelector } from 'react-redux';
+import  {useHistory} from 'react-router-dom'
+//import actions from '../actions/orderAction';
 
 function AddOrder() {
-    const [menu, setMenu] = useState('');
-    const dispatch = useDispatch();
+   // const [menu, setMenu] = useState('');
+    const [order, setOrder] = useState('')
+    const [selection, setSelection] = useState('')
+    const currentOrder = useSelector((state) => { return state.order })
+     const userId = useSelector((state) => {return state.userId})
+    //const dispatch = useDispatch();
+    const history = useHistory()
 
-    function handleClick() {
-      dispatch(actions.addOrder(menu))
+    //This sets Local Storage value
+    function inputChange({ target }) {
+    setSelection(target.value)
+}
+
+    function addToOrder() {
+        console.log('currentOrder', currentOrder)
+       currentOrder.push(selection)
+        setOrder(currentOrder)
     }
-
+    
+// function handleClick() {
+     // dispatch(actions.addOrder(menu))
+    //}
+//Checkout
+    function Checkout() {
+        console.log('order', order)
+        console.log('userId', userId)
+        history.push('/Order')
+    }
+    
     return (
         <section className="add-order">
-            <input className="input-field" placeholder="Skriv in en menu" 
-            onKeyUp={ (event) => { setMenu(event.target.value) }} />
-            <button onClick={ handleClick }>Lägg till ny menu</button>
+            <input className="input-field" placeholder="Place Order" 
+            name="selection" onChange={inputChange} />
+            <button onClick={addToOrder}>Add To Order</button>
+            <div className="plus" onClick={() => addToOrder()}></div>
+
+            <div>
+                <button onClick={Checkout} > Checkout </button>
+            </div>
         </section>
     )
 }

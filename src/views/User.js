@@ -20,7 +20,7 @@ function User() {
             .then((response) => response.json())
             .then(result => {
                 console.log('Success:', result)
-                history.push("/")
+                history.push('/')
             })
             .catch(error => {
                 console.error('Error:', error)
@@ -41,12 +41,12 @@ function User() {
                     <label>
                         <p className="label"></p>
                         <input type="username" placeholder="Name" value={username} onChange={(e) => setUsername(e.target.value)}></input>
-                        </label>
+                        </label><br></br>
                     <label>
                         <p className="label"></p>
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
 
-                    </label>
+                    </label><br></br>
                      
                     <label>
           <input id="radio" type="radio"></input>GDPR Ok!

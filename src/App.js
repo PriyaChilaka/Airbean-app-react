@@ -15,10 +15,10 @@ function App() {
 <div className="App">
       <BrowserRouter>
       <Switch>
-        <Route path="/" component={ Profile } exact />
+        <Route path="/" component={ User } exact />
         <Route path="/About" component={ About } />
         <Route path="/Menu" component={ Menu } />
-        <Route path="/User" component={ User } />
+        <Route path="/User" component={ Profile } />
           <Route path="/orderStatus" component={orderStatus} />
           <Route path="/Order" component={ Order } />
         <Route path="/Navbar" component={ Navbar } />

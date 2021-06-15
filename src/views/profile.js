@@ -3,11 +3,11 @@
 import user from '../assets/user.png';
 
 import Header from '../components/Header'
-//import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 function Profile({setUserName, setPassWord}) {
-  //const history = useHistory()
-  //history.push('/Menu')
+  const history = useHistory()
+  history.push('/Menu')
 
   return (
     <div>

@@ -1,9 +1,8 @@
-function OrderItem({ order,order1,order2}) {
+function OrderItem({ task}) {
 
   return (
-      <li>{order}
-          {order1}
-          {order2}
+      <li>{task}
+         
       </li>
   )
 }

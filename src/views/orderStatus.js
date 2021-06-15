@@ -1,53 +1,58 @@
+import drone from '../assets/drone.png';
 
-import drone from '../assets/drone.png'
+//import { useHistory } from 'react-router-dom'
+import {   useSelector} from 'react-redux';
+import { useEffect, useState } from 'react';
 
-import { useHistory } from 'react-router-dom'
-import {  useDispatch ,useSelector} from 'react-redux';
-import { useEffect } from 'react';
-
-import OrderItem from '../components/OrderItem';
-
-import actions from '../actions/orderAction';
+//import OrderItem from '../components/OrderItem';
+//import actions from '../actions/orderAction';
 
 
 function OrderStatus() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const history = useHistory()
-  //const [menu,setMenu] =useState([])
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const orders = useSelector((state) => { return state.orders})
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const dispatch = useDispatch()
-// eslint-disable-next-line react-hooks/rules-of-hooks
+
+  const [data, setData] = useState('')
+ //const dispatch = useDispatch()
+  const userId = useSelector((state) => { return state.userId })
+ //const history=useHistory('')
+  
+  
+  function getOrder() {
+    console.log('userId', userId)
+    fetch('http://localhost:8000/api/order', {
+      body: JSON.stringify({ 'userId': userId, 'id': [] }),
+      headers: {
+        'content-Type':'application.json'
+      },
+      method:'POST'
+    })
+      .then((response) => response.json())
+      .then(result => {
+        setData(result)
+        console.log('Thank you for ordering', result)
+        
+      }) 
+  }
   useEffect(() => {
-    async function getOrder() {
-      const response = await fetch('http://localhost:8000/api/order/:id')
-      const data = await response.json()
-      console.log('getOrder:', data)
-     // setMenu(data.results)
-      dispatch(actions.getOrder(data.orders))
-    }
-
     getOrder()
-  }, [dispatch])
-
-  function handleClick() {
-    dispatch(actions.getOrder(orders))
-    history.push('/Menu')
-    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+ 
+  //handleClick () {
+  // dispatch(actions.getOrder(data))
+  // history.push('/Menu')
+// }
+  
+   
 
   return (
  <div>
            <div id="orderstatus">    
-        <img src={ drone } alt="different  with Coffee-Mug "/>
+        <img src={drone} alt="different  with Coffee-Mug " />
+        <div>Order  { data.time}</div>
         <h2 id="title-orderstatus">Your Order is On the way!</h2>
-        <p>13 Mintutes</p>
-        <ul className="menu-list">
-            { orders.map((menu1,index) => {
-              return <OrderItem order= { menu1.orderNumber } order1={ menu1.eta } order2={ menu1.price }  key={ index} />
-            }) }
-        </ul>
-        <button id="ok" type="button" onClick={ handleClick }>Ok,cool!</button>
+       
+        <div>It will reach you in { data.ETA}</div>
+        
       
     </div>
       

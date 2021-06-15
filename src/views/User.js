@@ -20,7 +20,7 @@ function User() {
             .then((response) => response.json())
             .then(result => {
                 console.log('Success:', result)
-                history.push('/')
+                history.push('/User')
             })
             .catch(error => {
                 console.error('Error:', error)

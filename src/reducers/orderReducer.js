@@ -1,33 +1,44 @@
-const initState = {
+ const initState = {
     menu: [],
-    orders: [],
-    userId: [],
-    selection:[]
+     orders: [],
+    counter:0
 }
 
-
-//let index =0
 export const orderReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'ADD_ORDER': {
-            
+        case 'ADD_ORDER':{
             return {
                 ...state,
                 orders: [
                     ...state.orders, {
-                        id: state.order.length + 1,
-            task: action.payload
+                        orderID: state.orders + 1,
+                        task: action.payload,
+                        done: false
                     }
                 ]
             }
+        }
+            case 'UPDATE_COUNTER': {
+            return {
+                ...state,
+                counter:action.payload
+}
+    
+  }
+            case 'SET_USERID': {
+            return {
+                ...state,
+                userId:action.payload
 
+            }
         }
              case 'POST_ORDER':
             return {
                 ...state,
-                orders: state.orders.map(order => {
-                    if (order.orderID !== action.payload) {
-                        return order;
+                orders: 
+                state.orders.map(order => {
+                    if (order.id !== action.payload) {
+                        return order
                     }
 
                     return {
@@ -35,20 +46,8 @@ export const orderReducer = (state = initState, action) => {
                         done: !order.done
                     }
                 })
+              
             }
-        case 'SET_USERID': {
-            return {
-                ...state,
-                userId:action.payload
-            }
-        }
-        
-             case 'POST_USERID': {
-            return {
-                ...state,
-                userId:action.payload
-            }
-        }
         case 'FETCH_MENU': {
 return {
     ...state,
@@ -60,3 +59,5 @@ default:
 return state
 }
 }
+
+export default orderReducer

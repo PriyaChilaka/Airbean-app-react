@@ -24,13 +24,12 @@ const updateCounter = (orders) => {
       payload: orders
   }
 }
-const postOrder = (orderID) => {
+const postOrder = (id) => {
   return {
     type: 'POST_ORDER',
-    payload: orderID
+    payload: id
   }
 }
-
 const getMenu = (menu) => {
   return {
       type:'FETCH_MENU',

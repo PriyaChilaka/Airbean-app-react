@@ -1,7 +1,7 @@
  const initState = {
     menu: [],
      orders: [],
-    counter:0
+    orderStatus:[]
 }
 
 export const orderReducer = (state = initState, action) => {
@@ -32,21 +32,10 @@ export const orderReducer = (state = initState, action) => {
 
             }
         }
-             case 'POST_ORDER':
+              case 'POST_ORDER':
             return {
                 ...state,
-                orders: 
-                state.orders.map(order => {
-                    if (order.id !== action.payload) {
-                        return order
-                    }
-
-                    return {
-                        ...order,
-                        done: !order.done
-                    }
-                })
-              
+                orderStatus: action.payload
             }
         case 'FETCH_MENU': {
 return {

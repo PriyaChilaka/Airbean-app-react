@@ -1,21 +1,20 @@
 import add from '../assets/add.png'
 import actions from '../actions/orderAction'
-import {  useDispatch,useSelector} from 'react-redux'
+import {  useDispatch} from 'react-redux'
 //import MeAddnuItem from './AddOrder'
 
 function MenuItem({ task }) {
-   const counter = useSelector((state) => { return state.counter})
+   
 console.log('task:',task)
   const dispatch = useDispatch()
 
 
+var number = 0
 
   function countClick() {
-    
-    
-    dispatch(actions.updateCounter(task))
-   //document.getElementById("number").innerHTML = number
-    
+
+   number++
+   document.getElementById("number").innerHTML = number
    dispatch(actions.addOrder(task))
   }
 
@@ -23,7 +22,7 @@ console.log('task:',task)
     <div>
       <div id="one-row">
       
-      <li className="title"> <img role="button" onClick={ () => { countClick(task) }} id="add" src={add} alt="add to product"/>{ task.title }<br></br>{task.price} kr </li>{counter}
+      <li className="title"> <img role="button" onClick={ () => { countClick(task) }} id="add" src={add} alt="add to product"/>{ task.title }<br></br>{task.price} kr </li>
               <li className="price"></li>
               
       </div>

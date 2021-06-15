@@ -46,11 +46,10 @@ function Menu() {
     setIsOpen(!isOpen);
     history.push('/Order')
   }
-  function handlePay() {
- console.log('Inside handlepay:')
+   function handlePay() {
+
     fetch('http://localhost:8000/api/order', {
-      
-      body: JSON.stringify({ orders}),
+      body: JSON.stringify({ orders }),
       headers: {
           'Content-Type': 'application/json'
        },
@@ -58,9 +57,16 @@ function Menu() {
     })
       .then((response) => response.json())
       .then(result => {
-       console.log('Success:', result)
-      console.log('postOrder:', orders)
-      dispatch(actions.postOrder(result.id, result.eta))
+      console.log('Success:', result)
+
+      const status = {
+        id: result.id,
+        eta: result.eta
+      }
+
+      dispatch(actions.postOrder(status))
+      console.log('postOrder:', status)
+      history.push("/orderstatus")
    })
       .catch(error => {
       console.error('Error:', error)

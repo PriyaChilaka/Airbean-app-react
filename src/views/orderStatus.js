@@ -1,65 +1,28 @@
-import drone from '../assets/drone.png';
+import '../css/orderStatus.css'
+import drone from'../assets/drone.png'
 
-//import { useHistory } from 'react-router-dom'
-import {   useSelector} from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom'
+import { useSelector} from 'react-redux'
 
-//import OrderItem from '../components/OrderItem';
-//import actions from '../actions/orderAction';
+function Orderstatus() {
 
+    const history = useHistory()
+    const orderStatus = useSelector((state) => { return state.orderStatus})
 
-function OrderStatus() {
-
-  const [data, setData] = useState('')
- //const dispatch = useDispatch()
-  const userId = useSelector((state) => { return state.userId })
- //const history=useHistory('')
-  
-  
-  function getOrder() {
-    console.log('userId', userId)
-    fetch('http://localhost:8000/api/order', {
-      body: JSON.stringify({ 'userId': userId, 'id': [] }),
-      headers: {
-        'content-Type':'application.json'
-      },
-      method:'POST'
-    })
-      .then((response) => response.json())
-      .then(result => {
-        setData(result)
-        console.log('Thank you for ordering', result)
-        
-      }) 
-  }
-  useEffect(() => {
-    getOrder()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
- 
-  //handleClick () {
-  // dispatch(actions.getOrder(data))
-  // history.push('/Menu')
-// }
-  
-   
-
-  return (
- <div>
-           <div id="orderstatus">    
-        <img src={drone} alt="different  with Coffee-Mug " />
-        <div>Order  { data.time}</div>
-        <h2 id="title-orderstatus">Your Order is On the way!</h2>
-       
-        <div>It will reach you in { data.ETA}</div>
-        
-      
-    </div>
-      
-      </div>
-      
-    
-  );
+function handleOk() {
+  history.push("/profile")
 }
 
-export default OrderStatus
+  return (
+    <div>
+    <div id="orderstatus">
+    <img src={drone} alt="Drönare med kaffemugg"/>
+    <h2 id="title-orderstatus">Din beställning är påväg!</h2>
+    <p>{orderStatus.id}</p>
+    <p>{orderStatus.eta}</p>
+    <button id="ok" type="button" onClick={ handleOk }>Ok, cool!</button>
+    </div>
+    </div>
+  )
+}
+export default Orderstatus

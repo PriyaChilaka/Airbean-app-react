@@ -97,7 +97,7 @@ function Menu() {
       </div>
       </div>
      
-      <h2 id="title-menu">Meny</h2>
+      <h2 id="title-menu">Menu</h2>
        
         <ul className="menu-list">
             { menu.map((menu1) => {

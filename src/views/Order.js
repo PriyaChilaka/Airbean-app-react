@@ -18,10 +18,11 @@ function OrderUser () {
  // const history = useHistory()
 
   async function getOrder() {
+       // eslint-disable-next-line no-undef
        let url=`http://localhost:8000/api/order/:${userId}`
       
       //  let url = 'localhost/order' + userId
-       console.log('userId', userId)
+       console.log('priya', userId)
       const response = await fetch(url);
         const data = await response.json();
         if(data)

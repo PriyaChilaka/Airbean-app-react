@@ -1,7 +1,7 @@
 import add from '../assets/add.png'
 import actions from '../actions/orderAction'
 import {  useDispatch} from 'react-redux'
-//import MeAddnuItem from './AddOrder'
+import './MenuItem.css'
 
 function MenuItem({ task }) {
    
@@ -22,7 +22,8 @@ var number = 0
     <div>
       <div id="one-row">
       
-      <li className="title"> <img role="button" onClick={ () => { countClick(task) }} id="add" src={add} alt="add to product"/>{ task.title }<br></br>{task.price} kr </li>
+       <img role="button" onClick={ () => { countClick(task) }} id="add" src={add} alt="add to product"/><li className="title">{ task.title } </li>
+      <li className="price">{ task.price } kr</li>
               <li className="price"></li>
               
       </div>

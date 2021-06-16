@@ -10,7 +10,7 @@ function Orderstatus() {
     const orderStatus = useSelector((state) => { return state.orderStatus})
 
 function handleOk() {
-  history.push("/profile")
+  history.push("/Order")
 }
 
   return (

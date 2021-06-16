@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import logo from '../assets/logo.png';
-
+import '../css/User.css'
 import Header from '../components/Header'
 import {useHistory} from 'react-router-dom'
 

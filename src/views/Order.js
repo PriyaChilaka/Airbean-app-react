@@ -1,51 +1,66 @@
-import { useState } from 'react';
-//import logo from '../assets/logo.png';
+import Header from '../components/Header';
+import user from '../assets/user.png'
+import Footer from '../components/Footer';
+import {  useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import OrderItem from '../components/OrderItem';
 
-import Header from '../components/Header'
-import {useHistory} from 'react-router-dom'
+ import '../css/order.css'
 
-function Order() {
-    const [orderID, setOrderID] = useState('')
-    const [userId, setUserId] = useState('')
-    const history = useHistory()
+ 
+function OrderUser () {
+  const [orderResponse, setOrderRes] = useState('');
+  const orders = useSelector((state) => { return state.orders})
+  const userId = useSelector((state) => { return state.userId})
+  console.log('user id in order = ', orders);
+  console.log('user id in userId = ', userId);
+  const dispatch = useDispatch()
+ // const history = useHistory()
 
-    function handleTotal() {
-        fetch('http://localhost:8000/api/order', {
-            body: JSON.stringify({ orderID: orderID,userid:userId}),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST'
-        })
-            .then((response) => response.json())
-            .then(result => {
-                console.log('Your Order is Ready:', result)
-                history.push("/orderStatus")
-            })
-            .catch(error => {
-                console.error('Error:', error)
-            })
-    
-  }
-    
-    return (
-        <div className="order">
-            <Header />
-            <div id="order_id">
-   
-            <form className="order_form">
-                
-                <input type="userid"  value={orderID} onChange={(e) => setOrderID(e.target.value)}>BryggKaffee</input>
+  async function getOrder() {
+       let url=`http://localhost:8000/api/order/:${userId}`
+      
+      //  let url = 'localhost/order' + userId
+       console.log('userId', userId)
+      const response = await fetch(url);
+        const data = await response.json();
+        if(data)
+        {
+        console.log('data==', data.orders);
+      // .then(result => {
+        setOrderRes(data.orders);
+      
+        }
 
-                <input type="id" value={userId} onChange={(e) => setUserId(e.target.value)}>Total</input>
+      
+    }
 
-                <button type="button" className="submit_btn" onClick={handleTotal}>Take My Money</button>
-                </form>
-                </div>
-        </div>
-    )
+  useEffect(() => {
+        getOrder()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch])
+
+  return (
+    <div>
+          
+            
+     
+        <Header />
+      <div id="profile">
+       <img id="login_order" src={user} alt="Airbean Login" />  
+        <h2 id="text_profile">Order history</h2>
+        { orderResponse && orderResponse.map((orderlist, index) => {            
+              return <OrderItem  order={orderlist.ETA} order1={ orderlist.orderID} order2={ orderlist.price} kr key={ index } />            
+              
+            }) }
+      
+     
+      <Footer />
+       </div>
+       </div>
+  );
 }
 
 
 
-export default Order
+export default OrderUser;

@@ -1,5 +1,5 @@
   
-
+import '../css/About.css'
 import img from '../assets/women.png'
 import Header from '../components/Header'
 import Footer from '../components/Footer'

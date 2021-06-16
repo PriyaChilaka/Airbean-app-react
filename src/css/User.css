@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
 
-body {
-  background-color: #2f2926;
-}
-
 h1 {
   font-family: "PT Serif", serif;
 }
@@ -35,7 +31,6 @@ p {
 }
 
 #login {
-  background-color: #2f2926;
   color: white;
   border-radius: 25px;
   border: none;

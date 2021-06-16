@@ -14,15 +14,17 @@ function handleOk() {
 }
 
   return (
-    <div>
     <div id="orderstatus">
+    <p id="order-number">Ordernummer #{orderStatus.orderID}</p>
     <img src={drone} alt="Drönare med kaffemugg"/>
     <h2 id="title-orderstatus">Din beställning är påväg!</h2>
-    <p>{orderStatus.id}</p>
-    <p>{orderStatus.eta}</p>
+    <p id="eta">{orderStatus.eta} minuter</p>
     <button id="ok" type="button" onClick={ handleOk }>Ok, cool!</button>
-    </div>
     </div>
   )
 }
+
+
+
+
 export default Orderstatus

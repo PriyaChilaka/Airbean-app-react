@@ -24,3 +24,14 @@
   font-size: 24px;
   cursor: pointer;
 }
+#order-number {
+  font-family: "Work Sans", sans-serif;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+#eta {
+  font-family: "Work Sans", sans-serif;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}

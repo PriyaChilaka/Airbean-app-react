@@ -1,52 +1,44 @@
-import bag from'../assets/bag.png'
-//import add from '../assets/add.png'
 import '../css/Menu.css'
+import bag from'../assets/bag.png'
+
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import Modal from "react-modal"
+import { useSelector, useDispatch } from 'react-redux'
+
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import MenuItem from '../components/MenuItem'
 import AddOrder from '../components/AddOrder'
-import Modal from "react-modal";
-import {  useDispatch ,useSelector} from 'react-redux';
-import { useEffect ,useState } from 'react';
-
-
-import MenuItem from '../components/MenuItem';
-
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-
-import actions from '../actions/orderAction';
+import actions from '../actions/orderAction'
 
 
 function Menu() {
-  //const [menu,setMenu] =useState([])
- 
- const menu = useSelector((state) => { return state.menu })
+
+  const menu = useSelector((state) => { return state.menu })
   const orders = useSelector((state) => { return state.orders })
 
   const dispatch = useDispatch()
-  //const history = useHistory()
-//console.log('addorder',AddOrder)
+
   useEffect(() => {
     async function getMenu() {
       const response = await fetch('http://localhost:8000/api/coffee')
       const data = await response.json()
       console.log('getMenu:', data)
-     // setMenu(data.results)
-      
       dispatch(actions.getMenu(data.menu))
     }
 
     getMenu()
   }, [dispatch])
 
-   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const history = useHistory()
 
   function toggleModal() {
-    setIsOpen(!isOpen);
-    history.push('/Order')
+    setIsOpen(!isOpen)
   }
-   function handlePay() {
+ function handlePay() {
 
     fetch('http://localhost:8000/api/order', {
       body: JSON.stringify({ orders }),
@@ -60,7 +52,7 @@ function Menu() {
       console.log('Success:', result)
 
       const status = {
-        id: result.id,
+        orderID: result.orderID,
         eta: result.eta
       }
 
@@ -74,7 +66,7 @@ function Menu() {
     
   }
 
-   return (
+  return (
     <div id="menu">
       <Header />
     <div>
@@ -88,10 +80,10 @@ function Menu() {
         className="mymodal"
         overlayClassName="myoverlay"
       >
-        <h2 id="title-overlay">Your OrderConfirmation</h2>
+        <h2 id="title-overlay">Din beställning</h2>
 
         <ul className="order-list">
-            { orders.length > 0 && orders.map((menu1) => {
+            { orders && orders.map((menu1) => {
                 return <AddOrder task={ menu1 } key={`index-${ menu1.id }`} /> 
                 
             }) }
@@ -105,7 +97,7 @@ function Menu() {
       </div>
       </div>
      
-      <h2 id="title-menu">Menu</h2>
+      <h2 id="title-menu">Meny</h2>
        
         <ul className="menu-list">
             { menu.map((menu1) => {
@@ -114,11 +106,11 @@ function Menu() {
         </ul>
 
     </div>
-
-    <Footer />
+<Footer></Footer>
+    
     </div>
   )
-
 }
 
-export default Menu;
+
+export default Menu

@@ -1,3 +1,10 @@
+const getMenu = (menu) => {
+  return {
+      type:'FETCH_MENU',
+      payload: menu
+  }
+}
+
 const addOrder = (orderID) => {
   return {
     type: 'ADD_ORDER',
@@ -5,38 +12,29 @@ const addOrder = (orderID) => {
   }
 }
 
-const setUserId= (status) => {
-  console.log('status=', status);
-  return {
-    type: 'POST_USERID',
-    payload: status
-  }
-}
-const getOrder = (orders) => {
-  return {
-      type: 'FETCH_ORDER',
-      payload: orders
-  }
-}
-const updateCounter = (orders) => {
-  return {
-      type: 'UPDATE_COUNTER',
-      payload: orders
-  }
-}
-const postOrder = (id) => {
+const postOrder = (orderID) => {
   return {
     type: 'POST_ORDER',
-    payload: id
+    payload: orderID
   }
 }
-const getMenu = (menu) => {
+const countClick = (task) => {
   return {
-      type:'FETCH_MENU',
-      payload: menu
+    type: 'ADD_COUNT',
+    payload: task
   }
-
 }
-
+const getOrder = (userId) => {
+  return {
+    type: 'FETCH_ORDER',
+    payload: userId
+  }
+}
+const setUserId = (orderID) => {
+  return {
+    type: 'POST_ORDER',
+    payload: orderID
+  }
+}
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { addOrder, getOrder, postOrder, getMenu,setUserId,updateCounter}
+export default { getMenu, addOrder, postOrder,countClick,getOrder,setUserId}

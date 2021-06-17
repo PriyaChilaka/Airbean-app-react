@@ -1,43 +1,49 @@
 import {useState, useEffect} from 'react'
 import '../css/orderHistory.css';
-import {  useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom'
-import actions from '../orderAction'
+import user from '../assets/user.png';
+import {  useDispatch,useSelector } from 'react-redux';
+//import { useHistory } from 'react-router-dom'
+import actions from '../actions/orderAction'
 
 //Function calling
 function OrderHistory() {
-  const [histories, setHistories] = useState([])
-  const history= useHistory()
- // const orders = useSelector((state) => { return state.orders})
-  const userId = useSelector((state) => { return state.userId})
-  const dispatch = useDispatch()
- 
- 
+ // const offers = useSelector((state) => { return state.offers})
+ const userId = useSelector((state) => { return state.userId})
+  const [orderhistory, setOrderhistory] = useState([])
+const dispatch = useDispatch()
+  
     useEffect(() => {
     async function getOrderHistory() {
       
      // let url = 'http://localhost:8000/api/order/{don-g1j}'
-      const response = await fetch( 'http://localhost:8000/api/order/'+userId)
+      const response = await fetch( `http://localhost:8000/api/order/` + userId)
       const data = await response.json()
       if (data.success === true) {
         console.log('getOrderHistory:', data)
-        setHistories(data)
+        setOrderhistory(data.order)
         console.log(data.success)
-        dispatch(actions.setUserId(data.userId))
-        history.push('/')
+       dispatch(actions.setUserid(userId))
+       // history.push('/')
+      } else {
+        setOrderhistory(null)
       }
 
       }
  
  
        getOrderHistory()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
-  console.log(histories)
+  //console.log(orderhistory)
 
   return (
+    <section className="orderHistory">
+      <img src={user} alt="Profilepic" />
+      <h1 className="orderuserid">{userId}</h1>
+      <p className="orderemail">Priyakolukuluri@hotmail.com</p>
       <ul className="order-wrap">
         {
-        histories&&histories.map(post => <div>
+        orderhistory.map(post => <div>
   <li className="order-list" key={post.id}>
   #{post.orderID}</li>
   <li className="order-list">{post.eta}</li>
@@ -52,6 +58,7 @@ function OrderHistory() {
         }
         
       </ul>
+      </section>
   )
 }
 

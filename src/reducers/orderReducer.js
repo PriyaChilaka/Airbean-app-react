@@ -1,9 +1,9 @@
   const initState = {
     menu: [],
     orders:[],
-     orderStatus: [],
-    orderID: [],
-      userId:[]
+     orderStatus: []
+    //orderID: [],
+    // userId: {}
 //count:0
     
 }
@@ -44,12 +44,11 @@ export const orderReducer = (state = initState, action) => {
         
        // }
         
- case "SET_USERID": {
+ case 'SET_USERID':
       return {
         ...state,
-        userId: action.payload,
-      };
-    }
+        userId: action.payload
+      }
 
 default:
 return state

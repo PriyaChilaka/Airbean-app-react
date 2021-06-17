@@ -25,7 +25,9 @@ function presentPage(){
       <hr></hr>
       <Link className="text-link" to="/User">My Profile</Link>
       <hr></hr>
-      <Link className="text-link" to="/Order">Orderstatus</Link>
+        <Link className="text-link" to="/Order">Orderstatus</Link>
+        <hr></hr>
+        <Link className="text-link" to="/Profile">Profile</Link>
     </nav>
     </div>
   )

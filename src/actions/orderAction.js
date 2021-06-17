@@ -23,19 +23,18 @@ const postOrder = (id) => {
     type: "FETCH_ORDER",
     payload: id,
   };
-};
-const getUserId = (id) => {
+};*/
+const getUserId = (userId) => {
   return {
-    type: 'FETCH_USERID',
-    payload: id
+    type: 'SET_USERID',
+    payload: userId
   }
-}*/
-const setUserId = (id) => {
-  
+}
+/*function setUserId(userId) {
   return {
-    type: "POST_USERID",
-    payload: id,
+    type: 'SET_USERID',
+    payload: userId
   };
-};
+}*/
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { getMenu, addOrder, postOrder,setUserId}
+export default { getMenu, addOrder,getUserId, postOrder}

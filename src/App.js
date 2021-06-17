@@ -18,10 +18,10 @@ function App() {
         <Route path="/" component={ User } exact />
         <Route path="/about" component={ About } />
         <Route path="/menu" component={ Menu } />
-        <Route path="/profile" component={ Profile } />
           <Route path="/orderstatus" component={orderStatus} />
           <Route path="/orderhistory" component={ orderHistory } />
-        <Route path="/navbar" component={ Navbar } />
+          <Route path="/navbar" component={Navbar} />
+           <Route path="/profile" component={ Profile } />
       </Switch>
       </BrowserRouter>
     </div>

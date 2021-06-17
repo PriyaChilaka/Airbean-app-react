@@ -1,14 +1,15 @@
 
 
 import user from '../assets/user.png';
-import orderHistory from './orderHistory'
+//import orderHistory from './orderHistory'
 import Header from '../components/Header'
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom'
 
 function Profile() {
 
-   const userId = useSelector((state) => { return state.userId})
+  //const userId = useSelector((state) => { return state.userId })
+ // const username = useSelector((state) => {return state.username})
   const history = useHistory()
   history.push('/')
 
@@ -18,17 +19,61 @@ function Profile() {
     <div id="user">
     <img src={user} alt="Profilepic"/>
 
-    <h3 className="profile-text">{ userId }</h3>
+        <h3 className="profile-text">886766787</h3>
 
-    <h2 id="text-profile">Orderhistorik</h2>
+    <section className="user">
+          <p>This is profile Page</p>
+          <p>Priya.kolukuluri@hotmail.com</p>
+        </section>
+        <div className="titleOrder">
+          <h1>OrderHistory</h1>
+        </div>
 
-    <orderHistory />
+        <div className="container">
+          <div className="lefthis">
+            <div className="left">
+              <p>#AB1123282323Z</p>
+              <p>Totalsumma</p>
+            </div>
+            <div className="left">
+              <p>#AB1123282323Z </p>
+              <p>Totalsumma</p>
+            </div>
+            <div className="left">
+              <p>#AB1123282323Z</p>
+              <p>Totalsumma</p>
+            </div>
+            <div className="leftTotal">
+              <p>Total </p>
+            </div>
+          </div>
+          <div className="righthis">
+            <div className="right">
+              <p>20/03/06</p>
+              <p>233 kr</p>
+            </div>
+            <div className="right">
+              <p>20/03/06</p>
+              <p>233 kr</p>
+            </div>
+            <div className="right">
+              <p>20/03/06</p>
+              <p>100 kr</p>
+            </div>
+            <div className="rightTotal">
+              <p>299 kr</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    
+    
  
         
 
    
-    </div>
+  
   )
 }
 

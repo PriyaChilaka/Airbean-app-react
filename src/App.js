@@ -1,6 +1,6 @@
 import './App.css';
 import {Switch, Route, BrowserRouter} from 'react-router-dom'
-import Order from './views/Order'
+import orderHistory from './views/orderHistory'
 import About from './views/About'
 import Menu from './views/Menu'
 import User from './views/User'
@@ -16,12 +16,12 @@ function App() {
       <BrowserRouter>
       <Switch>
         <Route path="/" component={ User } exact />
-        <Route path="/About" component={ About } />
-        <Route path="/Menu" component={ Menu } />
-        <Route path="/User" component={ Profile } />
-          <Route path="/orderStatus" component={orderStatus} />
-          <Route path="/Order" component={ Order } />
-        <Route path="/Navbar" component={ Navbar } />
+        <Route path="/about" component={ About } />
+        <Route path="/menu" component={ Menu } />
+        <Route path="/profile" component={ Profile } />
+          <Route path="/orderstatus" component={orderStatus} />
+          <Route path="/orderhistory" component={ orderHistory } />
+        <Route path="/navbar" component={ Navbar } />
       </Switch>
       </BrowserRouter>
     </div>

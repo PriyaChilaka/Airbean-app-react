@@ -17,6 +17,7 @@ function Menu() {
 
   const menu = useSelector((state) => { return state.menu })
   const orders = useSelector((state) => { return state.orders })
+   const userId = useSelector((state) => { return state.userId })
 
   const dispatch = useDispatch()
 
@@ -41,7 +42,7 @@ function Menu() {
  function handlePay() {
 
     fetch('http://localhost:8000/api/order', {
-      body: JSON.stringify({ orders }),
+      body: JSON.stringify({ userId:userId,orders }),
       headers: {
           'Content-Type': 'application/json'
        },
@@ -52,7 +53,7 @@ function Menu() {
       console.log('Success:', result)
 
       const status = {
-        orderID: result.orderID,
+        orderID: result.id,
         eta: result.eta
       }
 
@@ -87,9 +88,12 @@ function Menu() {
                 return <AddOrder task={ menu1 } key={`index-${ menu1.id }`} /> 
                 
             }) }
-        </ul>
-
-        <button id="pay" onClick={ handlePay }>Take my money!</button>
+            </ul>
+            
+   <p id="total">Total..............</p> 
+        <p id="moms">Inkl moms + drönarleverans</p>
+        
+            <button id="pay" onClick={handlePay}>Take my money!</button>
       </Modal>
 
       <div id="small-circle">

@@ -5,36 +5,37 @@ const getMenu = (menu) => {
   }
 }
 
-const addOrder = (orderID) => {
+const addOrder = (id) => {
   return {
     type: 'ADD_ORDER',
-    payload: orderID
+    payload: id
   }
 }
 
-const postOrder = (orderID) => {
+const postOrder = (id) => {
   return {
     type: 'POST_ORDER',
-    payload: orderID
+    payload: id
   }
 }
-const countClick = (task) => {
+/*const getOrderHistory = (id) => {
   return {
-    type: 'ADD_COUNT',
-    payload: task
-  }
-}
-const getOrder = (userId) => {
+    type: "FETCH_ORDER",
+    payload: id,
+  };
+};
+const getUserId = (id) => {
   return {
-    type: 'FETCH_ORDER',
-    payload: userId
+    type: 'FETCH_USERID',
+    payload: id
   }
-}
-const setUserId = (orderID) => {
+}*/
+const setUserId = (id) => {
+  
   return {
-    type: 'POST_ORDER',
-    payload: orderID
-  }
-}
+    type: "POST_USERID",
+    payload: id,
+  };
+};
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { getMenu, addOrder, postOrder,countClick,getOrder,setUserId}
+export default { getMenu, addOrder, postOrder,setUserId}

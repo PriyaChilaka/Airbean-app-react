@@ -6,10 +6,9 @@ function AddOrder({ task }) {
   return (
        
       <div>
-        <li className="title-cart">{ task.task.title }.............. </li>
-        <li className="price-cart">{ task.task.price } kr</li>
-        <p id="total">Total..............</p>
-      <p id="moms">Inkl moms + drönarleverans</p>
+        <li className="title-cart">{ task.title }.............. </li>
+        <li className="price-cart">{ task.price } kr</li>
+       
        <i className="arrow up"></i><p>1</p><i className="arrow down"></i>
         </div>
        

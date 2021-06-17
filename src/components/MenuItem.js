@@ -9,12 +9,12 @@ console.log('task:',task)
   const dispatch = useDispatch()
 
 
-var number = 0
+var count = 0
 
   function countClick() {
 
-   number++
-   document.getElementById("number").innerHTML = number
+   count++
+   document.getElementById("number").innerHTML = count
    dispatch(actions.addOrder(task))
   }
 
@@ -22,9 +22,10 @@ var number = 0
     <div>
       <div id="one-row">
       
-       <img role="button" onClick={ () => { countClick(task) }} id="add" src={add} alt="add to product"/><li className="title">{ task.title } </li>
-      <li className="price">{ task.price } kr</li>
-              <li className="price"></li>
+        <img role="button" onClick={() => { countClick(task) }} id="add" src={add} alt="add to product" />
+        <li className="title">{task.title} </li>
+        <li className="price">{ task.price } kr</li>
+              
               
       </div>
           <li id="desc">{task.desc}</li>

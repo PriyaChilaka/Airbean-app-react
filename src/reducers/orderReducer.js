@@ -1,12 +1,13 @@
   const initState = {
     menu: [],
     orders:[],
-      orderStatus: [],
+     orderStatus: [],
+    orderID: [],
       userId:[]
-
+//count:0
     
 }
-let number=0
+//let number=0
 export const orderReducer = (state = initState, action) => {
     switch (action.type) {
         case 'FETCH_MENU': {
@@ -20,33 +21,35 @@ export const orderReducer = (state = initState, action) => {
             return {
                 ...state,
                 orders: [
-                    ...state.orders, {
-                        id: state.orders + 1,
-                        task: action.payload,
-                        done: false
-                    }
+                    ...state.orders, 
+                        
+                        action.payload,
+                        
+                    
                 ]
             }
         }
-        case 'SET_USERID':
-          return  {
-              ...state,
-              userId:action.payload
-            }
+       
              case 'POST_ORDER':
             return {
                 ...state,
-                orderStatus: action.payload
+              orderStatus: action.payload
             }
-case 'ADD_COUNT': {
-    return {
-       ...state,
-        number: number++,
-        task:action.payload
-    }
+//case 'ADD_COUNT': {
+    //return {
+       //...state,
         
+       //count:state.count +action.payload
+    //}
+        
+       // }
+        
+ case "SET_USERID": {
+      return {
+        ...state,
+        userId: action.payload,
+      };
     }
-
 
 default:
 return state

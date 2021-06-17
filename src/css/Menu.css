@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
 
 #menu {
-  background-color: #f5d6d0;
+  background-color: #f3e4e1;
   color: #2f2926;
 }
 
@@ -39,23 +39,19 @@
 
 #bag {
   margin-top: 18px;
+  cursor: pointer;
 }
-
-/* #menu-items {
-  display: flex;
-} */
 
 .mymodal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   background-color: white;
   overflow: auto;
   border-radius: 4px;
   outline: none;
-  padding: 210px 30px 210px 30px;
+  padding: 150px 30px 150px 30px;
 }
 
 .myoverlay {
@@ -73,4 +69,63 @@
   white-space: nowrap;
   color: #2f2926;
   text-align: center;
+}
+
+#pay {
+  background-color: #2f2926;
+  color: white;
+  border-radius: 25px;
+  border: none;
+  padding: 12px 50px;
+  margin-top: 20px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 24px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+#add {
+  cursor: pointer;
+}
+
+.menu-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0px;
+  padding-left: 0px;
+  margin-bottom: 40px;
+  display: inline-block;
+}
+
+.menu-list img {
+  float: left;
+}
+
+#total {
+  margin-top: 100px;
+  font-size: 23px;
+  font-family: "PT Serif", serif;
+}
+
+#moms {
+  font-size: 12px;
+  font-family: "Work Sans", sans-serif;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }

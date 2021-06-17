@@ -1,11 +1,11 @@
-function OrderItem({ order,order1,order2}) {
+function OrderItem({ orderlist}) {
 
   return (
-      <li>{order}
-      {order1}
-      {order2}
-      </li>
+    <div>
       
+     <li className="title">{ orderlist.orderlist.title } </li>
+      <li className="price">{ orderlist.orderlist.price } kr</li>
+      </div>
   )
 }
 

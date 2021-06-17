@@ -1,7 +1,7 @@
 
 
 import user from '../assets/user.png';
-//import orderHistory from './orderHistory'
+import '../css/orderHistory.css'
 import Header from '../components/Header'
 //import { useSelector } from 'react-redux';
 //import {useHistory} from 'react-router-dom'
@@ -15,7 +15,7 @@ function Order() {
   return (
     <div>
          <Header />
-    <div id="user">
+    <div >
     <img src={user} alt="Profilepic"/>
 
         <h3 className="profile-text">886766787</h3>

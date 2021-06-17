@@ -3,12 +3,13 @@ import actions from '../actions/orderAction'
 import {  useDispatch} from 'react-redux'
 import './MenuItem.css'
 
+//calling function
 function MenuItem({ task }) {
    
 console.log('task:',task)
   const dispatch = useDispatch()
 
-
+//counting the cart
 var count = 0
 
   function countClick() {

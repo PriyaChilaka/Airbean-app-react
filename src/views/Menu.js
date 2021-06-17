@@ -12,9 +12,9 @@ import MenuItem from '../components/MenuItem'
 import AddOrder from '../components/AddOrder'
 import actions from '../actions/orderAction'
 
-
+// calling function
 function Menu() {
-
+//userId,menu,orders storing at state
   const menu = useSelector((state) => { return state.menu })
   const orders = useSelector((state) => { return state.orders })
    const userId = useSelector((state) => { return state.userId })
@@ -33,13 +33,14 @@ function Menu() {
   }, [dispatch])
 
   const [isOpen, setIsOpen] = useState(false)
-
   const history = useHistory()
 
+  //toggleModal function
   function toggleModal() {
     setIsOpen(!isOpen)
   }
- function handlePay() {
+ //fetching api
+  function handlePay() {
 
     fetch('http://localhost:8000/api/order', {
       body: JSON.stringify({ userId:userId,orders }),
@@ -50,7 +51,7 @@ function Menu() {
     })
       .then((response) => response.json())
       .then(result => {
-      console.log('Success:', result)
+  
 
       const status = {
         orderID: result.id,
@@ -58,7 +59,7 @@ function Menu() {
       }
 
       dispatch(actions.postOrder(status))
-      console.log('postOrder:', status)
+      
       history.push("/orderstatus")
    })
       .catch(error => {

@@ -4,7 +4,7 @@ function AddOrder({ task }) {
 
   console.log('AddOrder:',task)
   return (
-       
+       //adding the orders
       <div>
         <li className="title-cart">{ task.title }.............. </li>
         <li className="price-cart">{ task.price } kr</li>

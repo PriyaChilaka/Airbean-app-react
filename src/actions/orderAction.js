@@ -1,3 +1,5 @@
+//actions are going here
+
 const getMenu = (menu) => {
   return {
       type:'FETCH_MENU',

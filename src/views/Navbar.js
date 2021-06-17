@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import '../css/Navbar.css'
 
+
+//calling NavBar function
 function Navbar() {
 
   const history = useHistory();
@@ -27,7 +29,7 @@ function presentPage(){
       <hr></hr>
         <Link className="text-link" to="/Order">Orderstatus</Link>
         <hr></hr>
-        <Link className="text-link" to="/Profile">Profile</Link>
+        <Link className="text-link" to="/orderHistory">OrderHistory</Link>
     </nav>
     </div>
   )

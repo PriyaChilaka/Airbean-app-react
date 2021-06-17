@@ -1,65 +1,81 @@
-import {useState, useEffect} from 'react'
-import '../css/orderHistory.css';
+
+
 import user from '../assets/user.png';
-import {  useDispatch,useSelector } from 'react-redux';
-//import { useHistory } from 'react-router-dom'
-import actions from '../actions/orderAction'
+//import orderHistory from './orderHistory'
+import Header from '../components/Header'
+//import { useSelector } from 'react-redux';
+//import {useHistory} from 'react-router-dom'
 
-//Function calling
-function OrderHistory() {
- // const offers = useSelector((state) => { return state.offers})
- const userId = useSelector((state) => { return state.userId})
-  const [orderhistory, setOrderhistory] = useState([])
-const dispatch = useDispatch()
+function Order() {
+
   
-    useEffect(() => {
-    async function getOrderHistory() {
-      
-     // let url = 'http://localhost:8000/api/order/{don-g1j}'
-      const response = await fetch( `http://localhost:8000/api/order/` + userId)
-      const data = await response.json()
-      if (data.success === true) {
-        console.log('getOrderHistory:', data)
-        setOrderhistory(data.order)
-        console.log(data.success)
-       dispatch(actions.setUserid(userId))
-       // history.push('/')
-      } else {
-        setOrderhistory(null)
-      }
-
-      }
+  //const history = useHistory()
  
- 
-       getOrderHistory()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch])
-  //console.log(orderhistory)
 
   return (
-    <section className="orderHistory">
-      <img src={user} alt="Profilepic" />
-      <h1 className="orderuserid">{userId}</h1>
-      <p className="orderemail">Priyakolukuluri@hotmail.com</p>
-      <ul className="order-wrap">
-        {
-        orderhistory.map(post => <div>
-  <li className="order-list" key={post.id}>
-  #{post.orderID}</li>
-  <li className="order-list">{post.eta}</li>
-  <li className="order-list">total ordersumma {post.price} kr</li>
-  <hr></hr>
-  
-  
-  </div>
+    <div>
+         <Header />
+    <div id="user">
+    <img src={user} alt="Profilepic"/>
 
-  )
+        <h3 className="profile-text">886766787</h3>
+
+    <section className="user">
+          <p>This is profile Page</p>
+          <p>Priya.kolukuluri@hotmail.com</p>
+        </section>
+        <div className="titleOrder">
+          <h1>OrderHistory</h1>
+        </div>
+
+        <div className="container">
+          <div className="lefthis">
+            <div className="left">
+              <p>#AB1123282323Z</p>
+              <p>Totalsumma</p>
+            </div>
+            <div className="left">
+              <p>#AB1123282323Z </p>
+              <p>Totalsumma</p>
+            </div>
+            <div className="left">
+              <p>#AB1123282323Z</p>
+              <p>Totalsumma</p>
+            </div>
+            <div className="leftTotal">
+              <p>Total </p>
+            </div>
+          </div>
+          <div className="righthis">
+            <div className="right">
+              <p>20/03/06</p>
+              <p>233 kr</p>
+            </div>
+            <div className="right">
+              <p>20/03/06</p>
+              <p>233 kr</p>
+            </div>
+            <div className="right">
+              <p>20/03/06</p>
+              <p>100 kr</p>
+            </div>
+            <div className="rightTotal">
+              <p>299 kr</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
  
-        }
         
-      </ul>
-      </section>
+
+   
+  
   )
 }
 
-export default OrderHistory;
+
+
+export default Order

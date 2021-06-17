@@ -4,11 +4,14 @@ import '../css/User.css'
 import Header from '../components/Header'
 import {useHistory} from 'react-router-dom'
 
+//calling user function
+
 function User() {
+    //username and password 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const history = useHistory()
-
+//login method 
     function handleLogin() {
         fetch('http://localhost:8000/api/account', {
             body: JSON.stringify({ username: username, password: password }),

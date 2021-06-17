@@ -1,15 +1,18 @@
-  const initState = {
+  //initiating reducers
+
+const initState = {
     menu: [],
     orders:[],
-     orderStatus: []
+     orderStatus: [],
     //orderID: [],
-    // userId: {}
+     userId: {}
 //count:0
     
 }
 //let number=0
 export const orderReducer = (state = initState, action) => {
     switch (action.type) {
+        //fetching menu
         case 'FETCH_MENU': {
             return {
                 ...state,

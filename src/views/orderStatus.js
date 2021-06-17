@@ -4,13 +4,15 @@ import drone from'../assets/drone.png'
 import { useHistory } from 'react-router-dom'
 import { useSelector} from 'react-redux'
 
+//calling orderstatus
 function Orderstatus() {
 
+  //storre the status 
     const history = useHistory()
     const orderStatus = useSelector((state) => { return state.orderStatus})
 
 function handleOk() {
-  history.push('/profile')
+  history.push('/orderHistory')
 }
 
   return (

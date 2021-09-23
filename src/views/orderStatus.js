@@ -12,7 +12,7 @@ function Orderstatus() {
     const orderStatus = useSelector((state) => { return state.orderStatus})
 
 function handleOk() {
-  history.push('/orderHistory')
+  history.push('/orderHistory/'+orderStatus.orderID)
 }
 
   return (

@@ -1,24 +1,24 @@
 import '../css/Menu.css'
 import bag from'../assets/bag.png'
-
-import { useState, useEffect } from 'react'
+//import  UserContext  from '../App.js'
+import { useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 import Modal from "react-modal"
 import { useSelector, useDispatch } from 'react-redux'
-
+//import { useState } from "react";
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuItem from '../components/MenuItem'
 import AddOrder from '../components/AddOrder'
 import actions from '../actions/orderAction'
-
+Modal.setAppElement("#root")
 // calling function
 function Menu() {
 //userId,menu,orders storing at state
   const menu = useSelector((state) => { return state.menu })
   const orders = useSelector((state) => { return state.orders })
-   const userId = useSelector((state) => { return state.userId })
-
+ const userId = useSelector((state) => { return state.userId })
+const [data, setData] = useState("");
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function Menu() {
       const response = await fetch('http://localhost:8000/api/coffee')
       const data = await response.json()
       console.log('getMenu:', data)
-      dispatch(actions.getMenu(data.menu))
+      dispatch(actions.getMenu(data))
     }
 
     getMenu()
@@ -41,9 +41,9 @@ function Menu() {
   }
  //fetching api
   function handlePay() {
-
+console.log('userId',userId)
     fetch('http://localhost:8000/api/order', {
-      body: JSON.stringify({ userId:userId,orders }),
+      body: JSON.stringify({ userId:userId,id:[] }),
       headers: {
           'Content-Type': 'application/json'
        },
@@ -52,7 +52,8 @@ function Menu() {
       .then((response) => response.json())
       .then(result => {
   
-
+setData(result);
+        console.log("works", result);
       const status = {
         orderID: result.id,
         eta: result.eta
@@ -102,8 +103,9 @@ function Menu() {
       </div>
       </div>
      
+      <div className="orderNumber"> Ordernummer #{data.orderNumber} </div>
       <h2 id="title-menu">Menu</h2>
-       
+
         <ul className="menu-list">
             { menu.map((menu1) => {
                 return <MenuItem task={ menu1 } key={ menu1.id } /> 

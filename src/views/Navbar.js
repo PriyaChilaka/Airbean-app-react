@@ -22,7 +22,9 @@ function presentPage(){
     <img id="cross" src={ cross } alt="menucross" role="button" onClick={presentPage}/>
     <nav>
       <Link className="text-link" to="/Menu">Menu</Link>
-      <hr></hr>
+        <hr></hr>
+        <Link className="text-link" to="/Profile">About My Profile</Link>
+        <hr></hr>
       <Link className="text-link" to="/About">About Coffee</Link>
       <hr></hr>
       <Link className="text-link" to="/User">My Profile</Link>

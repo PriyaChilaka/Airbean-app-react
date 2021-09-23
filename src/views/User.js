@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useState} from 'react';
 import logo from '../assets/logo.png';
 import '../css/User.css'
 import Header from '../components/Header'
 import {useHistory} from 'react-router-dom'
 
 //calling user function
-
-function User() {
+//const UserContext = createContext(undefined)
+//const UpdateContext = createContext(undefined)
+function User({update,updatePassword}) {
     //username and password 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+   
     const history = useHistory()
 //login method 
     function handleLogin() {
@@ -23,6 +25,9 @@ function User() {
             .then((response) => response.json())
             .then(result => {
                 console.log('Success:', result)
+                
+                //update(username)
+               // updatePassword(password)//
                 history.push('/menu')
             })
             .catch(error => {
@@ -61,6 +66,7 @@ function User() {
         </div>
     )
 }
+
 
 
 

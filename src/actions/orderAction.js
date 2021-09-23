@@ -6,7 +6,13 @@ const getMenu = (menu) => {
       payload: menu
   }
 }
-
+const setUserId =(status) => {
+ 
+  return {
+    type: 'POST_USERID',
+    payload: status
+  };
+}
 const addOrder = (id) => {
   return {
     type: 'ADD_ORDER',
@@ -26,17 +32,19 @@ const postOrder = (id) => {
     payload: id,
   };
 };*/
-const getUserId = (userId) => {
+const getOrder = (orderid) => {
   return {
-    type: 'SET_USERID',
-    payload: userId
-  }
-}
-/*function setUserId(userId) {
-  return {
-    type: 'SET_USERID',
-    payload: userId
+    type: "FETCH_ORDER",
+    payload: orderid,
   };
-}*/
+};
+
+const setSelection = (selection) => {
+  return {
+    type: "POST_SELECTION",
+    payload: selection,
+  };
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { getMenu, addOrder,getUserId, postOrder}
+export default { getMenu, getOrder,setUserId,addOrder ,postOrder,setSelection}

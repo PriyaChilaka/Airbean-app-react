@@ -2,11 +2,12 @@
 
 const initState = {
     menu: [],
-    orders:[],
-     orderStatus: [],
-    //orderID: [],
-     userId: {}
-//count:0
+    orders: [],
+   userId: [],
+  selection: [],
+     orderStatus: []
+   
+   
     
 }
 //let number=0
@@ -25,34 +26,49 @@ export const orderReducer = (state = initState, action) => {
                 ...state,
                 orders: [
                     ...state.orders, 
-                        
-                        action.payload,
+                    {
+                        id: state.orders + 1,
+                        task: action.payload,
+                        done: false
+                    }
                         
                     
                 ]
             }
         }
-       
+        case "SET_USERID": {
+      return {
+        ...state,
+        userId: action.payload,
+      };
+    }
+    case "SET_SELECTION": {
+      return {
+        ...state,
+        selection: action.payload,
+      };
+    }
+   case "POST_USERID": {
+      console.log("POST_USERID=", action.payload);
+      return {
+        ...state,
+        userId: action.payload,
+      };
+    }
+
              case 'POST_ORDER':
             return {
                 ...state,
               orderStatus: action.payload
             }
-//case 'ADD_COUNT': {
-    //return {
-       //...state,
-        
-       //count:state.count +action.payload
-    //}
-        
-       // }
-        
- case 'SET_USERID':
+            case "FETCH_ORDER": {
       return {
         ...state,
-        userId: action.payload
-      }
-
+        orderid: action.payload,
+      };
+    }
+     
+       
 default:
 return state
 }

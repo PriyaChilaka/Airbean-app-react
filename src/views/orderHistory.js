@@ -1,81 +1,75 @@
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+//import navicon from "../assets/navicon.png";
+import OrderItem from "../components/OrderItem";
+//import { Link } from "react-router-dom";
+import actions from '../actions/orderAction'
+//import "../styles/status.css";
+// import {useHistory} from 'react-router-dom'
+
+function OrderStatus() {
+  //const [orderResponse, setOrderRes] = useState("");
+  const order = useSelector((state) => { return state.order})
+  const userId = useSelector((state) => {
+    return state.userId;
+  });
+  const dispatch = useDispatch();
+  // const history = useHistory()
+
+    useEffect(() => {
+  async function getOrder() {
+    console.log("userId", userId);
+    //let url = `http://localhost:8000/api/order/${userId}`;
+    //let url='http://localhost:8000/api/order/MlTRNH0iJf';
+
+    
+    const response = await fetch(`http://localhost:8000/api/order/${userId}`);
+    const data = await response.json();
+      console.log('getorder:', data)
+   dispatch(actions.getOrder(data))
+      //setOrderRes(data.order);
+    
+  }
 
 
-import user from '../assets/user.png';
-import '../css/orderHistory.css'
-import Header from '../components/Header'
-//import { useSelector } from 'react-redux';
-//import {useHistory} from 'react-router-dom'
-
-function Order() {
-
-  
-  //const history = useHistory()
- 
+    getOrder();
+    
+  },[dispatch] );
 
   return (
-    <div>
-         <Header />
-    <div >
-    <img src={user} alt="Profilepic"/>
+    <div id="statushistory">
+      <div>
+        <article className="statusorder">
+          <Header />
+          <div id="statusnavicon"></div>
+         
+            
+          <h1>Order history</h1>
+          <img id="profileimage" src alt="Logo" />
+          <div>Priya Kolukuluri</div>
+          <div>priya.kolukuluri@iths.se</div>
 
-        <h3 className="profile-text">886766787</h3>
-
-    <section className="user">
-          <p>This is profile Page</p>
-          <p>Priya.kolukuluri@hotmail.com</p>
-        </section>
-        <div className="titleOrder">
-          <h1>OrderHistory</h1>
-        </div>
-
-        <div className="container">
-          <div className="lefthis">
-            <div className="left">
-              <p>#AB1123282323Z</p>
-              <p>Totalsumma</p>
-            </div>
-            <div className="left">
-              <p>#AB1123282323Z </p>
-              <p>Totalsumma</p>
-            </div>
-            <div className="left">
-              <p>#AB1123282323Z</p>
-              <p>Totalsumma</p>
-            </div>
-            <div className="leftTotal">
-              <p>Total </p>
-            </div>
+          <div className="statusmenu">
+            {
+              order&&order.map((task) => {
+                return (
+                  <OrderItem
+                    id="statusitem"
+                    orderlist={task}
+                    
+                    key={task.id}
+                  />
+                );
+              })}
           </div>
-          <div className="righthis">
-            <div className="right">
-              <p>20/03/06</p>
-              <p>233 kr</p>
-            </div>
-            <div className="right">
-              <p>20/03/06</p>
-              <p>233 kr</p>
-            </div>
-            <div className="right">
-              <p>20/03/06</p>
-              <p>100 kr</p>
-            </div>
-            <div className="rightTotal">
-              <p>299 kr</p>
-            </div>
-          </div>
-        </div>
+        </article>
+
+        <Footer />
       </div>
     </div>
-    
-    
- 
-        
-
-   
-  
-  )
+  );
 }
 
-
-
-export default Order
+export default OrderStatus;

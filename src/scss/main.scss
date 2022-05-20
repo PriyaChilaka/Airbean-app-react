@@ -1,0 +1,26 @@
+@import "theme";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto 50px auto;
+  width: 375px;
+  height: 667px;
+  background: $base-dark;
+  overflow-y: scroll;
+  border-radius: 5px;
+}
+// Hide scrollbar
+.App::-webkit-scrollbar {
+  display: none;
+}
+.App {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}

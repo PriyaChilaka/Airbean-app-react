@@ -1,17 +1,6 @@
-  import footer from'../assets/footer.png'
-import './Footer.css'
+import footer from "../assets/footer.svg";
 
 function Footer() {
-
-
-
-  return (
-    <div id="footer">
-
-      <img src={footer} alt="Love your colours" />
-      <p>@2021 Priya</p>
-    </div>
-
-  )
+  return <img src={footer} alt="Footer leaf"></img>;
 }
-export default Footer
+export default Footer;

@@ -1,44 +1,39 @@
-import './App.css';
-//import { useState, createContext } from 'react';
-import {Switch, Route, BrowserRouter} from 'react-router-dom'
-import orderHistory from './views/orderHistory'
-import About from './views/About'
-import Profile from './views/Profile'
-import Menu from './views/Menu'
-import  User  from './views/User'
-//import Profile from './views/Profile'
-import orderStatus from './views/orderStatus'
-import Navbar from './views/Navbar'
+import { Route, Switch } from "react-router-dom";
+import { useState } from "react";
+import "./scss/main.css";
+import "./scss/theme.css";
 
-//const UserContext = createContext(undefined)
-//const UpdateContext = createContext(undefined)
+import { LoginContext } from "./context/LoginContext";
+
+import Navbar from "./views/Nav";
+import Start from "./views/Start";
+import Profile from "./views/Profile";
+import Menu from "./views/Menu";
+import About from "./views/About";
+import Cart from "./components/Cart";
+import Status from "./views/Status";
 
 function App() {
-
-   //const [username, setUsername] = useState('')
-    //const [password, setPassword] = useState('')
+  const [loggedIn, setLogin] = useState(false);
 
   return (
-<div className="App">
-      <BrowserRouter>
-      
-      <Switch>
-        
-        <Route path="/about" component={ About } />
-        <Route path="/menu" component={ Menu } />
-          <Route path="/orderstatus" component={orderStatus} />
-          <Route path="/orderhistory" component={orderHistory} />
-         
-          <Route path="/navbar" component={Navbar} />
-          <Route path="/user" component={User} exact />
-          <Route path="/" component={ Profile } />
-            </Switch>
-            
-      </BrowserRouter>
+    <div className="App">
+      <Navbar></Navbar>
+
+      <section className="routes">
+        <LoginContext.Provider value={{ loggedIn, setLogin }}>
+          <Switch>
+            <Route path="/" component={Start} exact></Route>
+            <Route path="/profile" component={Profile}></Route>
+            <Route path="/menu" component={Menu}></Route>
+            <Route path="/status" component={Status}></Route>
+            <Route path="/cart" component={Cart}></Route>
+            <Route path="/about" component={About}></Route>
+          </Switch>
+        </LoginContext.Provider>
+      </section>
     </div>
-  )
+  );
 }
 
-
- // eslint-disable-next-line import/no-anonymous-default-export
- export default App 
+export default App;
